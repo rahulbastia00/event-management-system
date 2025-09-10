@@ -6,7 +6,8 @@ from passlib.context import CryptContext
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.orm import Session
-from . import database, schemas, crud
+# 👇 CHANGE 1: Import 'models' here
+from . import database, schemas, crud, models
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -42,7 +43,8 @@ def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(
         email: str = payload.get("sub")
         if email is None:
             raise credentials_exception
-        token_data = schemas.TokenData(email=email)
+        # 👇 CHANGE 2: Use 'models.TokenData' instead of 'schemas.TokenData'
+        token_data = models.TokenData(email=email)
     except JWTError:
         raise credentials_exception
     user = crud.get_user_by_email(db, email=token_data.email)
