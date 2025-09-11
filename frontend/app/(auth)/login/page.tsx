@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, FormEvent } from 'react';
-import { useRouter } from 'next/navigation';
 import { loginUser } from '@/lib/api';
 import Link from 'next/link';
 
@@ -10,7 +9,6 @@ export default function LoginPage() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
-  const router = useRouter();
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -21,11 +19,14 @@ export default function LoginPage() {
       const data = await loginUser({ email, password });
       if (data.access_token) {
         localStorage.setItem('access_token', data.access_token);
-        // Using window.location to force a full page reload, which helps the Navbar update its state
         window.location.href = '/';
       }
-    } catch (err: any) {
-      setError(err.message || 'An unexpected error occurred.');
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError('An unexpected error occurred.');
+      }
     } finally {
       setLoading(false);
     }
@@ -74,7 +75,7 @@ export default function LoginPage() {
           </div>
         </form>
         <p className="text-sm text-center text-gray-600">
-            Don't have an account?{' '}
+            Don&apos;t have an account?{' '}
             <Link href="/signup" className="font-medium text-indigo-600 hover:text-indigo-500">
                 Sign up
             </Link>
