@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation';
 import { getAllEvents, createEvent, updateEvent, deleteEvent } from '@/lib/api';
 import { Event } from '@/types';
 
-// Define the shape of the form data
 type EventFormData = {
   title: string;
   description: string;
@@ -20,7 +19,6 @@ export default function AdminPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // Modal State
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentEvent, setCurrentEvent] = useState<Event | null>(null);
   const [formData, setFormData] = useState<EventFormData>({
@@ -31,20 +29,18 @@ export default function AdminPage() {
     image_url: '',
   });
 
-  // Fetch events function
   const fetchEvents = async () => {
     try {
       setLoading(true);
       const data = await getAllEvents();
       setEvents(data);
-    } catch (err) {
+    } catch (_err) { // Changed to _err to mark as unused
       setError('Failed to fetch events.');
     } finally {
       setLoading(false);
     }
   };
   
-  // Effect for initial auth check and data fetch
   useEffect(() => {
     const token = localStorage.getItem('access_token');
     if (!token) {
@@ -54,13 +50,11 @@ export default function AdminPage() {
     }
   }, [router]);
 
-  // Modal handlers
   const openModal = (event: Event | null = null) => {
     setCurrentEvent(event);
     if (event) {
-        // Format date and time for input fields
         const formattedDate = new Date(event.date).toISOString().split('T')[0];
-        const formattedTime = event.time; // Assuming time is already in "HH:MM:SS"
+        const formattedTime = event.time;
         setFormData({
             title: event.title,
             description: event.description,
@@ -88,19 +82,20 @@ export default function AdminPage() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
-        const eventPayload = { ...formData, time: `${formData.time}:00` }; // Ensure time has seconds
-
+        const eventPayload = { ...formData, time: `${formData.time}:00` };
         if (currentEvent) {
-            // Update existing event
             await updateEvent(currentEvent.id, eventPayload);
         } else {
-            // Create new event
             await createEvent(eventPayload);
         }
         closeModal();
-        fetchEvents(); // Refresh list
-    } catch (err: any) {
-        setError(err.message || 'An error occurred.');
+        fetchEvents();
+    } catch (err) {
+        if (err instanceof Error) {
+            setError(err.message);
+        } else {
+            setError('An error occurred.');
+        }
     }
   };
 
@@ -108,8 +103,8 @@ export default function AdminPage() {
     if (window.confirm('Are you sure you want to delete this event?')) {
       try {
         await deleteEvent(eventId);
-        fetchEvents(); // Refresh list
-      } catch (err) {
+        fetchEvents();
+      } catch (_err) { // Changed to _err to mark as unused
         alert('Failed to delete event.');
       }
     }
@@ -155,7 +150,6 @@ export default function AdminPage() {
         </table>
       </div>
 
-      {/* Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-40 flex justify-center items-center">
           <div className="bg-white p-8 rounded-lg shadow-2xl w-full max-w-lg z-50">
