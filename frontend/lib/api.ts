@@ -11,7 +11,7 @@ const getToken = () => {
 };
 
 // --- AUTH ---
-export const signupUser = async (userData: any) => {
+export const signupUser = async (userData: Record<string, string>) => {
   const response = await fetch(`${API_BASE_URL}/users/signup`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -24,7 +24,7 @@ export const signupUser = async (userData: any) => {
   return response.json();
 };
 
-export const loginUser = async (credentials: any) => {
+export const loginUser = async (credentials: Record<string, string>) => {
   const params = new URLSearchParams();
   params.append("username", credentials.email);
   params.append("password", credentials.password);
