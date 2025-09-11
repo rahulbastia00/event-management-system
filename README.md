@@ -4,9 +4,31 @@ This is a full-stack event management application built as part of the Hirekarma
 
 ---
 
-## Table of Contents
+## 🚀 Tech Stack & Tools
 
-* [Tech Stack](#tech-stack)
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
+  <img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" />
+  <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" />
+  <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />
+  <img src="https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=postgresql&logoColor=white" />
+  <img src="https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white" />
+  <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" />
+</p>
+
+---
+
+## 📐 Architecture Diagram
+
+<p align="center">
+  <img src="./document/architecture.png" alt="Architecture Diagram" width="700" />
+</p>
+
+---
+
+## 📋 Table of Contents
+
 * [Features](#features)
 * [Project Structure](#project-structure)
 * [Getting Started](#getting-started)
@@ -17,20 +39,9 @@ This is a full-stack event management application built as part of the Hirekarma
 * [API Endpoints](#api-endpoints)
 * [Deployment](#deployment)
 
-
 ---
 
-## Tech Stack
-
-* **Backend**: Python, FastAPI
-* **Frontend**: Next.js, React, Tailwind CSS
-* **Database**: PostgreSQL
-* **Authentication**: JWT (JSON Web Tokens)
-* **Version Control**: Git & GitHub
-
----
-
-## Features
+## ✨ Features
 
 * **User Authentication**: Secure Signup and Login for both admin and normal users.
 * **Role-Based Access Control**:
@@ -42,7 +53,7 @@ This is a full-stack event management application built as part of the Hirekarma
 
 ---
 
-## Project Structure
+## 📂 Project Structure
 
 ```
 event-management-system/
@@ -61,23 +72,25 @@ event-management-system/
 │   ├── requirements.txt
 │   └── .env.example
 ├── frontend/                 # Next.js Application (coming soon)
+├── document/                 # Docs & Architecture Diagram
+│   └── architecture.png
 └── README.md
 ```
 
 ---
 
-## Getting Started
+## ⚙️ Getting Started
 
 Follow these instructions to set up and run the project locally.
 
-### Prerequisites
+### 🔑 Prerequisites
 
 * Python 3.8+
 * Node.js & npm (or yarn)
 * PostgreSQL database
 * Git
 
-### Backend Setup
+### 🖥 Backend Setup
 
 1. Clone the repository:
 
@@ -120,13 +133,13 @@ Follow these instructions to set up and run the project locally.
 
    The API will be running at [http://127.0.0.1:8000](http://127.0.0.1:8000). You can access the interactive documentation at [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs).
 
-### Frontend Setup
+### 🎨 Frontend Setup
 
 (Instructions to be added once the frontend is developed.)
 
 ---
 
-## API Endpoints
+## 📡 API Endpoints
 
 A brief overview of the available API endpoints. For detailed information, refer to the `/docs` route.
 
@@ -139,10 +152,9 @@ A brief overview of the available API endpoints. For detailed information, refer
 
 ---
 
-## Deployment
+## 🚀 Deployment
 
-* **Backend**: Deployed on \[Render/Railway/Heroku]. Live URL: *\[https://event-management-system-cn0v.onrender.com]/*
-* **Frontend**: Deployed on \[Vercel/Netlify]. Live URL: *\[https://event-management-system-gray-phi.vercel.app/]*
+* **Backend**: Deployed on \[Render/Railway/Heroku]. Live URL: *\[[https://event-management-system-cn0v.onrender.com](https://event-management-system-cn0v.onrender.com)]*
+* **Frontend**: Deployed on \[Vercel/Netlify]. Live URL: *\[[https://event-management-system-gray-phi.vercel.app/](https://event-management-system-gray-phi.vercel.app/)]*
 
 ---
-
