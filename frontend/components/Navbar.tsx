@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { jwtDecode } from 'jwt-decode';
 
 interface DecodedToken {
@@ -13,6 +13,12 @@ interface DecodedToken {
 const Navbar = () => {
   const [userEmail, setUserEmail] = useState<string | null>(null);
   const router = useRouter();
+
+  const handleLogout = useCallback(() => {
+    localStorage.removeItem('access_token');
+    setUserEmail(null);
+    router.push('/login');
+  }, [router]);
 
   useEffect(() => {
     const token = localStorage.getItem('access_token');
@@ -25,13 +31,7 @@ const Navbar = () => {
         handleLogout();
       }
     }
-  }, []);
-
-  const handleLogout = () => {
-    localStorage.removeItem('access_token');
-    setUserEmail(null);
-    router.push('/login');
-  };
+  }, [handleLogout]);
 
   return (
     <nav className="bg-white shadow-md">
