@@ -22,8 +22,12 @@ export default function SignupPage() {
     try {
       await signupUser({ name, email, password, role });
       router.push('/login');
-    } catch (err: any) {
-      setError(err.message || 'An unexpected error occurred.');
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError('An unexpected error occurred.');
+      }
     } finally {
       setLoading(false);
     }
