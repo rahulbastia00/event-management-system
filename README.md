@@ -16,7 +16,7 @@ This is a full-stack event management application built as part of the Hirekarma
   * [Frontend Setup](#frontend-setup)
 * [API Endpoints](#api-endpoints)
 * [Deployment](#deployment)
-* [Screenshots](#screenshots)
+
 
 ---
 
@@ -146,6 +146,3 @@ A brief overview of the available API endpoints. For detailed information, refer
 
 ---
 
-## Screenshots
-
-*(Add screenshots of your application here once the UI is complete.)*
