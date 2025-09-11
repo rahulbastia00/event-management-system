@@ -22,7 +22,7 @@ This is a full-stack event management application built as part of the Hirekarma
 ## 📐 Architecture Diagram
 
 <p align="center">
-  <img src="./document/architecture.png" alt="Architecture Diagram" width="700" />
+  <img src="./doc/Architecture-diagram.png" alt="Architecture Diagram" width="700" />
 </p>
 
 ---
