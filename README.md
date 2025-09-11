@@ -141,8 +141,8 @@ A brief overview of the available API endpoints. For detailed information, refer
 
 ## Deployment
 
-* **Backend**: Deployed on \[Render/Railway/Heroku]. Live URL: *\[Add your backend URL here]*
-* **Frontend**: Deployed on \[Vercel/Netlify]. Live URL: *\[Add your frontend URL here]*
+* **Backend**: Deployed on \[Render/Railway/Heroku]. Live URL: *\https://event-management-system-cn0v.onrender.com  *
+* **Frontend**: Deployed on \[Vercel/Netlify]. Live URL: *\https://event-management-system-gray-phi.vercel.app/*
 
 ---
 
